@@ -9,7 +9,8 @@ class OSDetector:
     def __init__(self):
         pass
 
-    def detect_os(self):
+    @staticmethod
+    def detect_os():
         """
         Detects the current operating system and raises an exception if it cannot be determined.
         """

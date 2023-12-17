@@ -6,6 +6,8 @@ __pycache__/
 
 .idea
 
+keystrokes.csv
+test_keystrokes.csv
 # C extensions
 *.so
 
