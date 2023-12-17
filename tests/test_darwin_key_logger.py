@@ -1,7 +1,6 @@
 # Import necessary testing modules
 import unittest
 from unittest.mock import patch
-import os
 
 # Import the DarwinKeyLogger class to be tested
 from core.key_capture.darwin_key_logger import DarwinKeyLogger
@@ -12,7 +11,6 @@ class TestDarwinKeyLogger(unittest.TestCase):
 
     # Test the initialization of the DarwinKeyLogger
     @patch('core.key_capture.darwin_key_logger.FileHandler')
-    @unittest.skipIf(os.environ.get('CI') == 'true', 'Skipping this test on CI environment')
     def test_initialization(self, MockFileHandler):
         # Create a DarwinKeyLogger instance with a mock FileHandler
         keylogger = DarwinKeyLogger('test_keystrokes.csv')
@@ -26,7 +24,6 @@ class TestDarwinKeyLogger(unittest.TestCase):
     # Test the start_capture method of DarwinKeyLogger
     @patch('core.key_capture.darwin_key_logger.FileHandler')
     @patch('pynput.keyboard.Listener')
-    @unittest.skipIf(os.environ.get('CI') == 'true', 'Skipping this test on CI environment')
     def test_start_capture(self, MockListener, MockFileHandler):
         # Create mock instances for FileHandler and Listener
         mock_file_handler = MockFileHandler.return_value
@@ -46,7 +43,6 @@ class TestDarwinKeyLogger(unittest.TestCase):
     # Test the stop_capture method of DarwinKeyLogger
     @patch('core.key_capture.darwin_key_logger.FileHandler')
     @patch('pynput.keyboard.Listener')
-    @unittest.skipIf(os.environ.get('CI') == 'true', 'Skipping this test on CI environment')
     def test_stop_capture(self, MockListener, MockFileHandler):
         # Create mock instances for FileHandler and Listener
         mock_listener_instance = MockListener.return_value
